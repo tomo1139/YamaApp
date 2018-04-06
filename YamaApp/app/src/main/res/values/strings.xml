@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">YamaApp</string>
+    <string name="detail_check">Check</string>
 </resources>
