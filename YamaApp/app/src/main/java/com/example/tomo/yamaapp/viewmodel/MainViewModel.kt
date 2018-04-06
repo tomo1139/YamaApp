@@ -3,7 +3,6 @@ package com.example.tomo.yamaapp.viewmodel
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.ObservableBoolean
-import android.widget.Toast
 import com.android.databinding.library.baseAdapters.BR
 import com.example.tomo.yamaapp.model.webapi.DiariesWebAPI
 import com.example.tomo.yamaapp.util.eventbus.EventBusHolder

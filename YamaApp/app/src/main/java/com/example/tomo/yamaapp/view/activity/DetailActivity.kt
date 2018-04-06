@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.example.tomo.yamaapp.R
 import com.example.tomo.yamaapp.databinding.ActivityDetailBinding
 import com.example.tomo.yamaapp.model.data.Diary
