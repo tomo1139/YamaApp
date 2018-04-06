@@ -17,14 +17,13 @@ import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
  */
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailBinding
+    private val binding: ActivityDetailBinding by lazy { DataBindingUtil.setContentView<ActivityDetailBinding>(this, R.layout.activity_detail) }
     private val diary: Diary by lazy { intent.getSerializableExtra(keyDiary) as Diary }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         title = this.javaClass.simpleName
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
         binding.diary = diary
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
