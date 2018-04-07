@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity(), MainViewListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        title = this.javaClass.simpleName
-
         binding.viewModel = viewModel
         binding.recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         binding.recyclerView.adapter = viewModel.controller.adapter

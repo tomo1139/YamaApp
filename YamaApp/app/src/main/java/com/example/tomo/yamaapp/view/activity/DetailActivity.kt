@@ -24,8 +24,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        title = this.javaClass.simpleName
-
         binding.viewModel = viewModel
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
