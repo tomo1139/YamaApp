@@ -15,7 +15,7 @@ class MainViewModel(private val listener: MainViewListener) {
 
     private val disposables = CompositeDisposable()
     val controller: DiaryListController by lazy { DiaryListController(listener) }
-    var isLoading = ObservableBoolean(false)
+    val isLoading = ObservableBoolean(false)
     val isError = ObservableBoolean(false)
 
     init {
