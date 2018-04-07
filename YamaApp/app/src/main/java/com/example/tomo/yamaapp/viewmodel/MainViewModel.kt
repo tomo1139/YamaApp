@@ -1,5 +1,8 @@
 package com.example.tomo.yamaapp.viewmodel
 
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import android.databinding.ObservableBoolean
 import com.example.tomo.yamaapp.model.webapi.DiariesWebAPI
 import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
@@ -11,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by tomo on 2018/04/06.
  */
-class MainViewModel(private val listener: MainViewListener) {
+class MainViewModel(private val listener: MainViewListener) : LifecycleObserver {
 
     private val disposables = CompositeDisposable()
     val controller: DiaryListController by lazy { DiaryListController(listener) }
@@ -33,6 +36,7 @@ class MainViewModel(private val listener: MainViewListener) {
                 })
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() = disposables.dispose()
 
     fun requestDiaries() {
