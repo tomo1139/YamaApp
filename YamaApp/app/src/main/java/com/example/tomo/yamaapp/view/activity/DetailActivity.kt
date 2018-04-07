@@ -17,9 +17,9 @@ import com.example.tomo.yamaapp.viewmodel.DetailViewModel
  */
 class DetailActivity : AppCompatActivity() {
 
-    private val binding: ActivityDetailBinding by lazy { DataBindingUtil.setContentView<ActivityDetailBinding>(this, R.layout.activity_detail) }
-    private val viewModel: DetailViewModel by lazy { DetailViewModel(diary) }
-    private val diary: Diary by lazy { intent.getSerializableExtra(keyDiary) as Diary }
+    private val binding by lazy { DataBindingUtil.setContentView<ActivityDetailBinding>(this, R.layout.activity_detail) }
+    private val viewModel by lazy { DetailViewModel(diary) }
+    private val diary by lazy { intent.getSerializableExtra(keyDiary) as Diary }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

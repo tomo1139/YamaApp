@@ -14,8 +14,8 @@ import com.example.tomo.yamaapp.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity(), MainViewListener, LifecycleOwner {
 
-    private val binding: ActivityMainBinding by lazy { DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main) }
-    private val viewModel: MainViewModel by lazy { MainViewModel(this) }
+    private val binding by lazy { DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main) }
+    private val viewModel by lazy { MainViewModel(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

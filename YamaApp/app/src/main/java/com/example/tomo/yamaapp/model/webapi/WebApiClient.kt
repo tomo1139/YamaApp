@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object WebApiClient {
 
-    val retrofit: Retrofit by lazy { createRetrofit() }
+    val retrofit by lazy { createRetrofit() }
 
     private fun createRetrofit(): Retrofit {
 

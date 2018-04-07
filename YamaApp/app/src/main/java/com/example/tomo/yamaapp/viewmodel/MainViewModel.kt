@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel(private val listener: MainViewListener) : LifecycleObserver {
 
     private val disposables = CompositeDisposable()
-    val controller: DiaryListController by lazy { DiaryListController(listener) }
+    val controller by lazy { DiaryListController(listener) }
     val isLoading = ObservableBoolean(false)
     val isError = ObservableBoolean(false)
 
