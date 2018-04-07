@@ -38,15 +38,14 @@ class MainViewModel(private val listener: MainViewListener) : BaseObservable() {
 
     fun requestDiaries() {
         DiariesWebAPI().request.diaries()
-                .doOnSubscribe { isLoading.set(true) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { isLoading.set(true) }
+                .doFinally { isLoading.set(false) }
                 .subscribe({ diaries ->
-                    isLoading.set(false)
                     isError.set(false)
                     controller.setData(diaries)
                 }, { _: Throwable ->
-                    isLoading.set(false)
                     isError.set(true)
                     listener.showToast("通信エラー")
                 })
