@@ -7,8 +7,5 @@ import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
  * Created by tomo on 2018/04/08.
  */
 class DetailViewModel(val diary: Diary) {
-
-    fun onClickCheck(title: String) {
-        EventBusHolder.checkEventBus.send(diary.copy(title = title))
-    }
+    fun onClickCheck(title: String) = EventBusHolder.checkEventBus.send(diary.copy(title = title))
 }
