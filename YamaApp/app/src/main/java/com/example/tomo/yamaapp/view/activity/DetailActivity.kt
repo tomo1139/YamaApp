@@ -42,8 +42,7 @@ class DetailActivity : AppCompatActivity() {
                 true
             }
             R.id.menuCheck -> {
-                val title = binding.editText.text.toString()
-                viewModel.onClickCheck(title)
+                viewModel.onClickCheck()
                 true
             }
             else -> {
