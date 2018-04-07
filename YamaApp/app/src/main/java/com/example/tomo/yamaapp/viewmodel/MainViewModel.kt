@@ -1,9 +1,7 @@
 package com.example.tomo.yamaapp.viewmodel
 
 import android.databinding.BaseObservable
-import android.databinding.Bindable
 import android.databinding.ObservableBoolean
-import com.android.databinding.library.baseAdapters.BR
 import com.example.tomo.yamaapp.model.webapi.DiariesWebAPI
 import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
 import com.example.tomo.yamaapp.view.listener.MainViewListener
@@ -18,13 +16,7 @@ class MainViewModel(private val listener: MainViewListener) : BaseObservable() {
 
     private val disposables = CompositeDisposable()
     val controller: DiaryListController by lazy { DiaryListController(listener) }
-    var isLoading: Boolean = false
-        @Bindable
-        get() = field
-        set(_refreshing) {
-            field = _refreshing
-            notifyPropertyChanged(BR.loading)
-        }
+    var isLoading = ObservableBoolean(false)
     val isError = ObservableBoolean(false)
 
     init {
@@ -46,14 +38,15 @@ class MainViewModel(private val listener: MainViewListener) : BaseObservable() {
 
     fun requestDiaries() {
         DiariesWebAPI().request.diaries()
+                .doOnSubscribe { isLoading.set(true) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ diaries ->
-                    isLoading = false
+                    isLoading.set(false)
                     isError.set(false)
                     controller.setData(diaries)
                 }, { _: Throwable ->
-                    isLoading = false
+                    isLoading.set(false)
                     isError.set(true)
                     listener.showToast("通信エラー")
                 })
