@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity(), MainViewListener, LifecycleOwner {
         binding.recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         binding.recyclerView.adapter = viewModel.controller.adapter
         lifecycle.addObserver(viewModel)
-
-        viewModel.requestDiaries()
     }
 
     override fun toDetail(diary: Diary) = startActivity(DetailActivity.newIntent(this, diary))

@@ -21,7 +21,8 @@ class MainViewModel(private val listener: MainViewListener) : LifecycleObserver 
     val isLoading = ObservableBoolean(false)
     val isError = ObservableBoolean(false)
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate() {
         disposables.add(EventBusHolder.checkEventBus.toObservable()
                 .subscribe { diary ->
                     val datas = controller.currentData?.map {
@@ -34,6 +35,7 @@ class MainViewModel(private val listener: MainViewListener) : LifecycleObserver 
                     controller.setData(datas)
                     listener.showToast("タイトルを設定しました")
                 })
+        requestDiaries()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
