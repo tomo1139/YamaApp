@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="diary"
-            type="com.example.tomo.yamaapp.model.data.Diary" />
+            name="viewModel"
+            type="com.example.tomo.yamaapp.viewmodel.DetailViewModel" />
 
     </data>
 
@@ -17,7 +17,7 @@
 
         <EditText
             android:id="@+id/editText"
-            android:text="@{diary.title}"
+            android:text="@{viewModel.diary.title}"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -10,7 +10,7 @@ import android.view.MenuItem
 import com.example.tomo.yamaapp.R
 import com.example.tomo.yamaapp.databinding.ActivityDetailBinding
 import com.example.tomo.yamaapp.model.data.Diary
-import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
+import com.example.tomo.yamaapp.viewmodel.DetailViewModel
 
 /**
  * Created by tomo on 2018/04/06.
@@ -18,13 +18,15 @@ import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
 class DetailActivity : AppCompatActivity() {
 
     private val binding: ActivityDetailBinding by lazy { DataBindingUtil.setContentView<ActivityDetailBinding>(this, R.layout.activity_detail) }
+    private val viewModel: DetailViewModel by lazy { DetailViewModel(diary) }
     private val diary: Diary by lazy { intent.getSerializableExtra(keyDiary) as Diary }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         title = this.javaClass.simpleName
-        binding.diary = diary
+
+        binding.viewModel = viewModel
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -41,7 +43,7 @@ class DetailActivity : AppCompatActivity() {
             }
             R.id.menuCheck -> {
                 val title = binding.editText.text.toString()
-                EventBusHolder.checkEventBus.send(diary.copy(title = title))
+                viewModel.onClickCheck(title)
                 true
             }
             else -> {
