@@ -1,6 +1,5 @@
 package com.example.tomo.yamaapp.viewmodel
 
-import android.databinding.BaseObservable
 import android.databinding.ObservableBoolean
 import com.example.tomo.yamaapp.model.webapi.DiariesWebAPI
 import com.example.tomo.yamaapp.util.eventbus.EventBusHolder
@@ -12,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by tomo on 2018/04/06.
  */
-class MainViewModel(private val listener: MainViewListener) : BaseObservable() {
+class MainViewModel(private val listener: MainViewListener) {
 
     private val disposables = CompositeDisposable()
     val controller: DiaryListController by lazy { DiaryListController(listener) }
